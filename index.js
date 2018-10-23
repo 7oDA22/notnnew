@@ -28,6 +28,17 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
+client.on('ready', () => {
+    console.log('----------------');
+  console.log('By Mahmoud-QuaStyle');
+console.log('----------------');
+console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(` ♦Support Server Gaming • `,"https://www.twitch.tv/")
+client.user.setStatus("dnd")
+});
+
+
+
 
  client.on('message', message => {
     if (message.content.startsWith("#id")) {
