@@ -11,23 +11,6 @@ const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '473104410571177986').setName("「");
-client.channels.find('id', '473104410571177986').setName("「 Wel");
-client.channels.find('id', '473104410571177986').setName("「 Welco");
-client.channels.find('id', '473104410571177986').setName("「 Welcome");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To Da");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To Dark");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To Darkne");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To Darkness");
-client.channels.find('id', '473104410571177986').setName("「 Welcome To Darkness 」");
-client.channels.find('id', '473104410571177986').setName("「 This Serv");
-client.channels.find('id', '473104410571177986').setName("「 This Server Us");
-client.channels.find('id', '473104410571177986').setName("「 This Server Useing Frix Premium 」");
-  }, 3000);
-});
 
 client.on('message', message => {
     if (message.content.startsWith("#avatar")) {
@@ -1072,7 +1055,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== '292357771943477252') return;
+  if (message.author.id !== '411137717884289024') return;
 
 if (message.content.startsWith(prefix + 'setplaying')) {
   client.user.setGame(argresult);
