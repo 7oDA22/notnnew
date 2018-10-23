@@ -28,14 +28,6 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
-client.on('ready', () => {
-    console.log('----------------');
-  console.log('By Mahmoud-QuaStyle');
-console.log('----------------');
-console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` ♦Support Server Gaming • `,"https://www.twitch.tv/")
-client.user.setStatus("dnd")
-});
 
 
 
@@ -963,21 +955,21 @@ client.on('message', message => {
   var argresult = args.join(' ');
   if (message.author.id !== '411137717884289024') return;
 
-if (message.content.startsWith(prefix + 'setplaying')) {
+if (message.content.startsWith(prefix + 'pl')) {
   client.user.setGame(argresult);
     message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 } else 
 
-if (message.content.startsWith(prefix + 'setwatching')) {
+if (message.content.startsWith(prefix + 'wh')) {
 client.user.setActivity(argresult, {type:'WATCHING'});
     message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 } else 
-if (message.content.startsWith(prefix + 'setlistening')) {
+if (message.content.startsWith(prefix + 'ls')) {
 client.user.setActivity(argresult, {type:'LISTENING'});
     message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 } else 
 
-if (message.content.startsWith(prefix + 'setstreaming')) {
+if (message.content.startsWith(prefix + 'setT')) {
   client.user.setGame(argresult, "https://www.twitch.tv/Justin-Ly0001");
     message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 }
