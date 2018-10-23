@@ -12245,216 +12245,80 @@ message.member.addRole(message.guild.roles.find("name", "100"));
 
 
 
+      bot.on('guildMemberAdd', member => {
+      const welcomer =  member.guild.channels.find('name', 'welcome');
+      var Canvas = require('canvas')
+      var jimp = require('jimp')
+
+      const w = ['./img/w1.png',
+      './img/w2.png',
+      './img/w3.png',
+      './img/w4.png',
+      './img/w5.png',
+      './img/w7.png',
+      './img/w8.png'];
+
+              let Image = Canvas.Image,
+                  canvas = new Canvas(401, 202),
+                  ctx = canvas.getContext('2d');
+              ctx.patternQuality = 'bilinear';
+              ctx.filter = 'bilinear';
+              ctx.antialias = 'subpixel';
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+              ctx.shadowOffsetY = 2;
+              ctx.shadowBlur = 2;
+              fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+                  if (err) return console.log(err)
+                  let BG = Canvas.Image;
+                  let ground = new Image;
+                  ground.src = Background;
+                  ctx.drawImage(ground, 0, 0, 401, 202);
+
+      })
+
+                      let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".gif" : member.user.displayAvatarURL;
+                      jimp.read(url, (err, ava) => {
+                          if (err) return console.log(err);
+                          ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                              if (err) return console.log(err);
+
+                              
+                              let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.drawImage(ava, 152, 27, 95, 95);
+
+                                                      //wl
+                              ctx.font = '20px Arial Bold';
+                              ctx.fontSize = '15px';
+                              ctx.fillStyle = "#FFFFFF";
+                              ctx.textAlign = "center";
+                                                         ctx.fillText(member.user.username, 200, 154);
+
+                              //NAME
+                              ctx.font = '20px Arial';
+                              ctx.fontSize = '28px';
+                              ctx.fillStyle = "#FFFFFF";
+                              ctx.textAlign = "center";
+                                    ctx.fillText(`انت العضو رقم${member.guild.memberCount} `
+                              , 200, 190);
+
+ welcomer.sendFile(canvas.toBuffer())
+
+
+
+      })
+      })
+      });
 
 
 
 
 
-client.on('message' , message => {
-    var prefix = '#';
-     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
- if(message.content.split(' ')[0].toLowerCase() == prefix + 'id') {
-     const millis = new Date().getTime() - message.guild.createdAt.getTime();
-    const now = new Date();
-    const createdAt = millis / 1000 / 60 / 60 / 24;
-    if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
-    let user = message.mentions.users.first() || message.author;
-    message.delete();
-   
-var men = message.mentions.users.first();
- var heg;
- if(men) {
-     heg = men
- } else {
-     heg = message.author
- }
-var mentionned = message.mentions.members.first();
-  var h;
- if(mentionned) {
-     h = mentionned
- } else {
-     h = message.member
- }
-
-    let game;
-    if (user.presence.game === null) {
-        game = 'None.';
-    } else {
-        game = user.presence.game.name;
-    }
-    let messag;
-    if (user.lastMessage === null) {
-        messag = 'None.';
-    } else {
-        messag = user.lastMessage;
-    }
-    let status;
-    if (user.presence.status === 'online') {
-        status = 'Online';
-    } else if (user.presence.status === 'dnd') {
-        status = 'DND';
-    } else if (user.presence.status === 'idle') {
-        status = 'Idle';
-    } else if (user.presence.status === 'offline') {
-        status = 'Offline';
-    }
-    if (user.presence.status === 'offline') {
-        stat = 0x000000;
-    } else if (user.presence.status === 'online') {
-        stat = 0x00AA4C;
-    } else if (user.presence.status === 'dnd') {
-        stat = 0x9C0000;
-    } else if (user.presence.status === 'idle') {
-        stat = 0xF7C035;
-    }
-    moment.locale('En-ly');
-                    message.guild.fetchInvites().then(invs => {
-      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
-      let Invites = invs.filter(i => i.inviter.id);
-      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-    const embed = new Discord.RichEmbed()
-
-  
-  .addField('Discord Info : ', `Name : ${user.username}\n Discriminator: #${user.discriminator}\nID : ${user.id} \nJoinedDiscord : ${moment(heg.createdTimestamp).fromNow()}\nBot :  ${user.bot}\nPlaying : ${game}\nStatus : ${status}`,true)
-  .addField('Server Info :', `LastMessage : ${messag}\nJoined :  ${moment(h.joinedAt).fromNow()} \n Invites :  ${inviteCount} Invite(s) \nRoles : `+message.guild.members.get(user.id).roles.array(role => role.name).slice(1).join(', '))
-  .setAuthor(`${user.username}`, user.displayAvatarURL)
-  .setColor('#36393e')
-    .setThumbnail(user.displayAvatarURL)
-    message.channel.send({embed})
-  .catch(e => logger.error(e));
- })
-}
- });
-
-});
 
 
 
-client.on('message', message => {
-    if(message.content == ('#profile')) {    
- 
-             if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
-            var Canvas = module.require('canvas');
-            var jimp = module.require('jimp');
-    
-     const w = ['./img/ID1.png','./img/ID2.png','./img/ID3.png','./img/ID4.png','./img/ID5.png'];
-    
-             let Image = Canvas.Image,
-                 canvas = new Canvas(802, 404),
-                 ctx = canvas.getContext('2d');
-             ctx.patternQuality = 'bilinear';
-             ctx.filter = 'bilinear';
-             ctx.antialias = 'subpixel';
-             ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-             ctx.shadowOffsetY = 2;
-             ctx.shadowBlur = 2;
-             fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-                 if (err) return console.log(err);
-                 let BG = Canvas.Image;
-                 let ground = new Image;
-                 ground.src = Background;
-                 ctx.drawImage(ground, 0, 0, 802, 404);
-    
-     })
-                                let user = message.mentions.users.first();
-          var men = message.mentions.users.first();
-             var heg;
-             if(men) {
-                 heg = men
-             } else {
-                 heg = message.author
-             }
-           var mentionned = message.mentions.members.first();
-              var h;
-             if(mentionned) {
-                 h = mentionned
-             } else {
-                 h = message.member
-             }
-             var ment = message.mentions.users.first();
-             var getvalueof;
-             if(ment) {
-               getvalueof = ment;
-             } else {
-               getvalueof = message.author;
-             }//ما خصك ,_,
-                                           let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
-                                             jimp.read(url, (err, ava) => {
-                                                 if (err) return console.log(err);
-                                                 ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                                                     if (err) return console.log(err);
-                            
-                                                             let Avatar = Canvas.Image;
-                                                             let ava = new Avatar;
-                                                             ava.src = buf;
-                                                             ctx.beginPath();
-                                                           ctx.drawImage(ava, 335, 3, 160, 169);
-                                                     ctx.font = '35px Arial Bold';
-                                                     ctx.fontSize = '40px';
-                                                     ctx.fillStyle = "#dadada";
-                                                     ctx.textAlign = "center";
-                                                    
-                            
-                                                     ctx.font = '30px Arial Bold';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${getvalueof.username}`,655, 170);
-                                                                            
-                                                                        
-                                                          moment.locale('ar-ly');        
-                                            
-                                            
-                                                                    ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${moment(h.joinedAt).fromNow()}`,150, 305);
-                                                              
-                                                              
-                                                                                                     ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                 ctx.fillText(`${moment(heg.createdTimestamp).fromNow()}`,150, 170); 
-                            
-                                                       let status;
-     if (getvalueof.presence.status === 'online') {
-         status = 'اون لاين';
-     } else if (getvalueof.presence.status === 'dnd') {
-         status = 'مشغول';
-     } else if (getvalueof.presence.status === 'idle') {
-         status = 'خارج النطاق';
-     } else if (getvalueof.presence.status === 'offline') {
-         status = 'اوف لاين';
-     }
-     
-     
-                                          ctx.cont = '35px Arial';
-                                          ctx.fontSize = '30px';
-                                          ctx.filleStyle = '#ffffff'
-                                          ctx.fillText(`${status}`,655,305)
-                  
-                                                                   ctx.font = 'regular 30px Cairo';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                         ctx.fillText(`${h.presence.game === null ? "لا يلعب" : h.presence.game.name}`,390,390);
-                            
-                               ctx.font = '35px Arial';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                                   ctx.fillText(`#${heg.discriminator}`,390,260)
-                            
-                                 ctx.beginPath();
-                                 ctx.stroke();
-                               message.channel.sendFile(canvas.toBuffer());
-                            
-                            
-                          
-                            
-                             })
-                            
-                             })
- }
- });
+
   
 
 client.login(process.env.BOT_TOKEN);
